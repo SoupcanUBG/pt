@@ -30492,7 +30492,7 @@
           l = null;
         async function c() {
           try {
-            ("electron", await l?.initialize(), (a = r.Ready));
+            ("kodub", await l?.initialize(), (a = r.Ready));
           } catch (e) {
             ((a = r.Error), console.error(e));
           }
@@ -62322,7 +62322,11 @@
         return !0 !== window.polytrackModConfiguration?.unblocked && Po();
       }
       function Po() {
-        return !1;
+        let e;
+        return (
+          (e = [/\.kodub\.com$/]),
+          !e.some((e) => e.test(location.hostname))
+        );
       }
       function Io() {
         let e;
@@ -62462,11 +62466,21 @@
                   .catch((e) => {
                     if (!n.isCancelled) {
                       const e = document.createElement("p");
-                      ((e.className = "error-message"),
+                      if (
+                        ((e.className = "error-message"),
                         (e.textContent = (0, C.gn)(this, Zs, "f").get(
                           "Error: Failed to load leaderboard",
                         )),
-                        (0, C.gn)(this, lo, "f").appendChild(e));
+                        (0, C.gn)(this, lo, "f").appendChild(e),
+                        Po())
+                      ) {
+                        const e = document.createElement("p");
+                        ((e.className = "error-message"),
+                          (e.textContent = (0, C.gn)(this, Zs, "f").get(
+                            "Unofficial versions of the game cannot access the leaderboard",
+                          )),
+                          (0, C.gn)(this, lo, "f").appendChild(e));
+                      }
                     }
                     console.error(e);
                   })
@@ -65985,7 +65999,7 @@
               })),
             ((0, C.gn)(this, Ec, "f").src = "images/logo.svg"),
             (0, C.gn)(this, kc, "f").appendChild((0, C.gn)(this, Ec, "f")),
-            _o() || Ro()
+            _o() || Po() || Ro()
               ? ((0, C.GG)(this, zc, document.createElement("div"), "f"),
                 ((0, C.gn)(this, zc, "f").className = "warning-message"),
                 _o() && (0, C.gn)(this, zc, "f").classList.add("modded"),
@@ -70088,7 +70102,7 @@
         }
         getLeaderboard(e, t, n, i, r) {
           let a =
-            "https://polyproxy.orangywastaken.workers.dev/" +
+            "https://polyproxy.polymodloader.com/" +
             (0, C.gn)(this, ku, "f") +
             "leaderboard?version=0.6.0&trackId=" +
             t +
@@ -70290,7 +70304,7 @@
         }
         getLeaderboardUserEntry(e, t, n) {
           const i =
-            "https://polyproxy.orangywastaken.workers.dev/" +
+            "https://polyproxy.polymodloader.com/" +
             (0, C.gn)(this, ku, "f") +
             "leaderboardUserEntry?version=0.6.0&trackId=" +
             t +
@@ -70344,7 +70358,7 @@
         }
         getRecordings(e) {
           const t =
-            "https://polyproxy.orangywastaken.workers.dev/" +
+            "https://polyproxy.polymodloader.com/" +
             (0, C.gn)(this, ku, "f") +
             "recordings?version=0.6.0&ids=" +
             e.join(",");
@@ -70458,7 +70472,7 @@
                 c(new Error("Recording is too large"));
               else {
                 const o =
-                  "https://polyproxy.orangywastaken.workers.dev/" +
+                  "https://polyproxy.polymodloader.com/" +
                   (0, C.gn)(this, ku, "f") +
                   "leaderboard";
                 let d =
@@ -70584,7 +70598,7 @@
         submitUserProfile(e, t, n, i) {
           return new Promise((r, a) => {
             const s =
-                "https://polyproxy.orangywastaken.workers.dev/" + (0, C.gn)(this, ku, "f") + "user",
+                "https://polyproxy.polymodloader.com/" + (0, C.gn)(this, ku, "f") + "user",
               o =
                 "version=0.6.0&userToken=" +
                 encodeURIComponent(e) +
@@ -70616,7 +70630,7 @@
               s(new Error("Submit not allowed"));
             else {
               const o =
-                  "https://polyproxy.orangywastaken.workers.dev/" +
+                  "https://polyproxy.polymodloader.com/" +
                   (0, C.gn)(this, ku, "f") +
                   "verifyRecordings",
                 l =
@@ -70749,7 +70763,7 @@
         getUser(e) {
           return new Promise((t, n) => {
             const i =
-                "https://polyproxy.orangywastaken.workers.dev/" +
+                "https://polyproxy.polymodloader.com/" +
                 (0, C.gn)(this, ku, "f") +
                 "user?version=0.6.0&userToken=" +
                 encodeURIComponent(e),
@@ -70817,7 +70831,7 @@
               "WebSocket creation not allowed with non-deterministic physics",
             );
           return new WebSocket(
-            "https://polyproxy.orangywastaken.workers.dev/" +
+            "https://polyproxy.polymodloader.com/" +
               (0, C.gn)(this, ku, "f") +
               "multiplayer/host",
           );
@@ -70828,7 +70842,7 @@
               "WebSocket creation not allowed with non-deterministic physics",
             );
           return new WebSocket(
-            "https://polyproxy.orangywastaken.workers.dev/" +
+            "https://polyproxy.polymodloader.com/" +
               (0, C.gn)(this, ku, "f") +
               "multiplayer/join",
           );
@@ -70836,7 +70850,7 @@
         getIceServers() {
           return new Promise((e, t) => {
             const n =
-                "https://polyproxy.orangywastaken.workers.dev/" +
+                "https://polyproxy.polymodloader.com/" +
                 (0, C.gn)(this, ku, "f") +
                 "iceServers?version=0.6.0",
               i = new XMLHttpRequest();
