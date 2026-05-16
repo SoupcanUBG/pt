@@ -70304,7 +70304,7 @@
         }
         getLeaderboardUserEntry(e, t, n) {
           const i =
-            "https://polyproxy.rxk.workers.dev/" +
+            LB_URL  +
             (0, C.gn)(this, ku, "f") +
             "leaderboardUserEntry?version=0.6.0&trackId=" +
             t +
